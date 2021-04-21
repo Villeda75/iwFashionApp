@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">IwFashionApp</string>
+    <string name="drawer_header">IW Fashion</string>
+    <string name="close">close</string>
+    <string name="open">open</string>
+    <string name="reservar">Ver más detalles</string>
+    <string name="ropa">Ropa</string>
+    <string name="zapatos">Zapatos</string>
+    <string name="accesorios">Accesorios</string>
+    <string name="todo">Ver todos los productos</string>
+    <string name="open_drawer">Abrir el menu de navegacion</string>
+    <string name="close_drawer">Cerrar el menu de navegacion</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agregar_carrito">Agregar al carrito</string>
+    <string name="enviar_custom_design">Enviar diseño personalizado</string>
+
+
+    <string name="correo_desing">ejemplo@gmail.com</string>
+    <string name="tel_desing">7101-0002</string>
+
+    <string name="description_desing">Escriba una breve descripción del diseño</string>
+</resources>
