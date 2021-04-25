@@ -20,4 +20,34 @@
     <string name="tel_desing">7101-0002</string>
 
     <string name="description_desing">Escriba una breve descripción del diseño</string>
+
+    <!-- Strings para login, resetpassword & new user -->
+    <string name="btn_log">Iniciar sesión</string>
+    <string name="lbl_newAccount">¿Sin cuenta aún? Registrate</string>
+    <string name="btn_google">Iniciar sesión con Google</string>
+    <string name="btn_fb">Iniciar sesión con Facebook</string>
+    <string name="lbl_forgot">¿Olvidaste la contraseña?</string>
+    <string name="tv_correologin">Correo electrónico</string>
+    <string name="tv_pass">Contraseña</string>
+
+    <string name="lbl_titlenewuser">Ingrese sus datos</string>
+    <string name="edt_name">Nombre</string>
+    <string name="edt_sname">Apellido</string>
+    <string name="edt_confpass">Confirmar contraseña</string>
+    <string name="btn_regnewuser">Registrar datos</string>
+
+    <string name="lbl_email">Ingrese el correo electrónico asociado a su cuenta</string>
+    <string name="btn_reset">Restablecer contraseña</string>
+    <string name="btn_back">Volver</string>
+
+    <string name="wrong_mail">Correo electrónico incorrecto</string>
+    <string name="wrong_pass">La contraseña debe tener 6 dígitos mínimo</string>
+
+    <string name="btn_logoutfire">Cerrar sesión firebase</string>
+    <string name="btn_logoutgoogle">Cerrar sesión google</string>
+    <string name="btn_logoutfacebook">Cerrar sesión facebook</string>
+    <string name="btn_deletegoogle">Desvincular google</string>
+
+    <string name="facebook_application_id" translatable="false">158984906034692</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb158984906034692</string>
 </resources>

@@ -11,20 +11,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.IwFashionApp"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".SplashGifActivity"></activity>
+        <activity android:name=".Resetpassword" />
+        <activity android:name=".Loginuser" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".DetalleProductoActivity"
-            android:theme="@style/Theme.IwFashionApp.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.IwFashionApp.NoActionBar">
+            android:name=".Login"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_application_id" />
     </application>
 
 </manifest>

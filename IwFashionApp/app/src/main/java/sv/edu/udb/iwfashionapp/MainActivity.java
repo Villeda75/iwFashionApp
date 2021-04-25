@@ -20,7 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView tvPrecio;
     ImageView imgproducto;
     ListView listviewProductos;
-
+    FirebaseAuth firebaseAuth;
+    private GoogleSignInClient mGoogleSignInClient;
+    private GoogleSignInOptions gso;
     Button BtnFind;
 
     @Override
@@ -56,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvDescripcion=findViewById(R.id.tvDescripcion);
         tvPrecio=findViewById(R.id.tvPrecio);
         imgproducto=findViewById(R.id.imgProducto);
-
+        firebaseAuth = FirebaseAuth.getInstance();
         BtnFind=findViewById(R.id.btnBuscar);
 
         toolbar=findViewById(R.id.toolbar);
@@ -72,8 +81,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
-
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
     @Override
     public void onBackPressed() {
@@ -169,5 +181,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
 
+    }
+
+    public void closeFirebaseAccount(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(MainActivity.this, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(MainActivity.this,Login.class);
+        startActivity(i);
+        MainActivity.this.finish();
+    }
+
+    public void closeFacebookAccount(View view) {
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+        Toast.makeText(MainActivity.this, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(MainActivity.this,Login.class);
+        startActivity(i);
+        MainActivity.this.finish();
+    }
+
+    public void closeGoogleAccount(View view) {
+        FirebaseAuth.getInstance().signOut();
+        mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Intent mainActivity = new Intent(getApplicationContext(), Login.class);
+                    startActivity(mainActivity);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "No se pudo cerrar sesión con google",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        Toast.makeText(MainActivity.this, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
+    }
+
+    private void signOut() {
+        FirebaseAuth.getInstance().signOut();
+        mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Intent IntentMainActivity = new Intent(getApplicationContext(), Login.class);
+                IntentMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(IntentMainActivity);
+                finish();
+            }
+        });
     }
 }
