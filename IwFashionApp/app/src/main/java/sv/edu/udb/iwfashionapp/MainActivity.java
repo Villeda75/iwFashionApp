@@ -177,13 +177,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FormCustomDesignFragment()).commit();
                 break;
 
+            case R.id.item_logout:
+
+                closeFirebaseAccount();
+                closeFacebookAccount();
+                closeGoogleAccount();
+                break;
+
         }
 
         return true;
 
     }
 
-    public void closeFirebaseAccount(View view) {
+    public void closeFirebaseAccount() {
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(MainActivity.this, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(MainActivity.this,Login.class);
@@ -191,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MainActivity.this.finish();
     }
 
-    public void closeFacebookAccount(View view) {
+    public void closeFacebookAccount() {
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
         Toast.makeText(MainActivity.this, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
@@ -200,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MainActivity.this.finish();
     }
 
-    public void closeGoogleAccount(View view) {
+    public void closeGoogleAccount() {
         FirebaseAuth.getInstance().signOut();
         mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

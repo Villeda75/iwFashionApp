@@ -42,8 +42,8 @@
 
             </item>
 
-            <item android:title="Opcion 3"
-                android:id="@+id/opc3">
+            <item android:title="Cerrar sesión"
+                android:id="@+id/item_logout">
 
             </item>
 
