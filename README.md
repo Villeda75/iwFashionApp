@@ -17,7 +17,7 @@
 [Trello](https://cutt.ly/kv8D4sN)
 
 ## Diseño de Mockups
-[Ver Mockups(https://cutt.ly/Ov8Fyt4)
+[Ver Mockups](https://cutt.ly/Ov8Fyt4)
 
 ## Licencia 
 
