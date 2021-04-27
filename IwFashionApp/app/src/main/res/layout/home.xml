@@ -22,12 +22,14 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp"/>
-<FrameLayout
-    android:id="@+id/fragment_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/homeactivity">
+
+        </FrameLayout>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

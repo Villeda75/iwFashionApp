@@ -30,11 +30,11 @@
     <string name="tv_correologin">Correo electrónico</string>
     <string name="tv_pass">Contraseña</string>
 
-    <string name="lbl_titlenewuser">Ingrese sus datos</string>
+    <string name="lbl_titlenewuser">Registrate</string>
     <string name="edt_name">Nombre</string>
     <string name="edt_sname">Apellido</string>
     <string name="edt_confpass">Confirmar contraseña</string>
-    <string name="btn_regnewuser">Registrar datos</string>
+    <string name="btn_regnewuser">Registrarse</string>
 
     <string name="lbl_email">Ingrese el correo electrónico asociado a su cuenta</string>
     <string name="btn_reset">Restablecer contraseña</string>
