@@ -24,8 +24,8 @@
     <!-- Strings para login, resetpassword & new user -->
     <string name="btn_log">Iniciar sesión</string>
     <string name="lbl_newAccount">¿Sin cuenta aún? Registrate</string>
-    <string name="btn_google">Iniciar sesión con Google</string>
-    <string name="btn_fb">Iniciar sesión con Facebook</string>
+    <string name="btn_google">Accede con Google</string>
+    <string name="btn_fb">Accede con Facebook</string>
     <string name="lbl_forgot">¿Olvidaste la contraseña?</string>
     <string name="tv_correologin">Correo electrónico</string>
     <string name="tv_pass">Contraseña</string>
