@@ -16,8 +16,9 @@
     <string name="enviar_custom_design">Enviar diseño personalizado</string>
 
 
-    <string name="correo_desing">ejemplo@gmail.com</string>
-    <string name="tel_desing">7101-0002</string>
+    <string name="correo_desing">tucorreo@gmail.com</string>
+    <string name="tel_desing">7645-3233</string>
+    <string name="solicitar_desing">Solicitar diseño</string>
 
     <string name="description_desing">Escriba una breve descripción del diseño</string>
 
