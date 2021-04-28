@@ -68,11 +68,10 @@ public class CustomAdapter extends BaseAdapter {
                 .into(imageProducto);
 
         TxtNombre.setText(item.getSlug());
-        TxtPrecioNormal.setText(String.valueOf(item.getSales_price()));
-TxtPrecioNormal.setText(String.valueOf(item.getSales_price()));
+        TxtPrecioNormal.setText( "$ " +  String.valueOf(item.getSales_price()));
         TxtPrecioDiscount.setPaintFlags(TxtPrecioDiscount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-TxtPrecioDiscount.setText(String.valueOf(item.getDiscount_price()));
+        TxtPrecioDiscount.setText( "$ " +  String.valueOf(item.getDiscount_price()));
 
 
         btn_ver_mas1.setOnClickListener(new View.OnClickListener() {
