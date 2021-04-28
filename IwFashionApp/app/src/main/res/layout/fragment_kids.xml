@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,75 +9,96 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:id="@+id/btn_accesories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="#FFFFFF"
-        android:text="@string/accesorios"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ListViewProducts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_shoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:background="#FFFFFF"
-        android:text="@string/zapatos"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ListViewProducts"
-        app:layout_constraintEnd_toStartOf="@+id/btn_accesories"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_all"
-        android:layout_width="208dp"
-        android:layout_height="53dp"
-        android:background="#FFFFFF"
-        android:text="@string/todo"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ListViewProducts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_shoes" />
+            <Button
+                android:id="@+id/btn_shoes"
+                android:layout_width="101dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:background="#FF100F0F"
+                android:text="@string/zapatos"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="177dp" />
 
-    <ListView
-        android:id="@+id/ListViewProducts"
-        android:layout_width="412dp"
-        android:layout_height="515dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+            <Button
+                android:id="@+id/btn_clothes"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#FF100F0F"
+                android:text="@string/ropa"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="56dp"
+                tools:layout_editor_absoluteY="80dp" />
+
+            <Button
+                android:id="@+id/btn_accesories"
+                android:layout_width="109dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:background="#FF100F0F"
+                android:text="@string/accesorios"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="281dp"
+                tools:layout_editor_absoluteY="80dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_all"
+                android:layout_width="208dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="110dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="10dp"
+                android:background="#FF100F0F"
+                android:text="@string/todo"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="113dp"
+                tools:layout_editor_absoluteY="167dp" />
+
+            <ListView
+                android:id="@+id/ListViewProducts"
+                android:layout_width="wrap_content"
+                android:layout_height="570dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="282dp">
 
 
-    </ListView>
+            </ListView>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_clothes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:background="#FFFFFF"
-        android:text="@string/ropa"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ListViewProducts"
-        app:layout_constraintEnd_toStartOf="@+id/btn_shoes"
-        app:layout_constraintHorizontal_bias="0.32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
