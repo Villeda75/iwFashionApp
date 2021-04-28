@@ -67,7 +67,7 @@ public class CustomAdapter extends BaseAdapter {
                 .load(item.getUrl_img().toString())
                 .into(imageProducto);
 
-        TxtNombre.setText(item.getSlug());
+        TxtNombre.setText(item.getProduct_type());
         TxtPrecioNormal.setText( "$ " +  String.valueOf(item.getSales_price()));
         TxtPrecioDiscount.setPaintFlags(TxtPrecioDiscount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
