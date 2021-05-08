@@ -16,25 +16,26 @@
     <string name="enviar_custom_design">Enviar diseño personalizado</string>
 
 
-    <string name="correo_desing">ejemplo@gmail.com</string>
-    <string name="tel_desing">7101-0002</string>
+    <string name="correo_desing">tucorreo@gmail.com</string>
+    <string name="tel_desing">7645-3233</string>
+    <string name="solicitar_desing">Solicitar diseño</string>
 
     <string name="description_desing">Escriba una breve descripción del diseño</string>
 
     <!-- Strings para login, resetpassword & new user -->
     <string name="btn_log">Iniciar sesión</string>
     <string name="lbl_newAccount">¿Sin cuenta aún? Registrate</string>
-    <string name="btn_google">Iniciar sesión con Google</string>
-    <string name="btn_fb">Iniciar sesión con Facebook</string>
+    <string name="btn_google">Accede con Google</string>
+    <string name="btn_fb">Accede con Facebook</string>
     <string name="lbl_forgot">¿Olvidaste la contraseña?</string>
     <string name="tv_correologin">Correo electrónico</string>
     <string name="tv_pass">Contraseña</string>
 
-    <string name="lbl_titlenewuser">Ingrese sus datos</string>
+    <string name="lbl_titlenewuser">Registrate</string>
     <string name="edt_name">Nombre</string>
     <string name="edt_sname">Apellido</string>
     <string name="edt_confpass">Confirmar contraseña</string>
-    <string name="btn_regnewuser">Registrar datos</string>
+    <string name="btn_regnewuser">Registrarse</string>
 
     <string name="lbl_email">Ingrese el correo electrónico asociado a su cuenta</string>
     <string name="btn_reset">Restablecer contraseña</string>

@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#090808"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.447"
@@ -33,37 +33,28 @@
 
     <Button
         android:id="@+id/btn_reservarCdesign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="157dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="20dp"
+        android:background="#090808"
         android:onClick="Reservar"
         android:text="@string/reservar"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageViewCdesign"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_Cdesign"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toEndOf="@+id/imageViewCdesign" />
 
     <TextView
         android:id="@+id/description_Cdesign"
-        android:layout_width="232dp"
-        android:layout_height="88dp"
+        android:layout_width="230dp"
+        android:layout_height="82dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#090808"
         app:layout_constraintBottom_toTopOf="@+id/btn_reservarCdesign"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toEndOf="@+id/imageViewCdesign"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_Cdesign"
-        app:layout_constraintVertical_bias="0.659" />
-
-    <ImageView
-        android:id="@+id/btn_delete_custom_Design"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_reservarCdesign"
-        app:srcCompat="@android:drawable/ic_menu_delete" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_Cdesign" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

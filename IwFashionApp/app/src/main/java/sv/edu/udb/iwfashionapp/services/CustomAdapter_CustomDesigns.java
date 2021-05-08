@@ -62,7 +62,7 @@ public class CustomAdapter_CustomDesigns extends BaseAdapter{
         imageCustomDesign=view.findViewById(R.id.imageViewCdesign);
         TxtNombre=view.findViewById(R.id.nombre_Cdesign);
         TxtDescrition=view.findViewById(R.id.description_Cdesign);
-        Btn_delete_custom_design=view.findViewById(R.id.btn_delete_custom_Design);
+        //Btn_delete_custom_design=view.findViewById(R.id.btn_delete_custom_Design);
         btn_reserva=view.findViewById(R.id.btn_reservarCdesign);
         Glide.with(view)
                 .load(item.getUrl_img().toString())
@@ -80,7 +80,7 @@ public class CustomAdapter_CustomDesigns extends BaseAdapter{
             }
         });
 
-        Btn_delete_custom_design.setOnClickListener(new View.OnClickListener() {
+        /*Btn_delete_custom_design.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -123,7 +123,7 @@ public class CustomAdapter_CustomDesigns extends BaseAdapter{
 
 
             }
-        });
+        });*/
         return view;
     }
 }

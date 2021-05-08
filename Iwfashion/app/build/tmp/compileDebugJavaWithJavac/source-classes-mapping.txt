@@ -1,0 +1,7 @@
+com/example/iw_fashion/SplashGifActivity.java
+ com.example.iw_fashion.SplashGifActivity
+ com.example.iw_fashion.SplashGifActivity$1
+com/example/iw_fashion/BuildConfig.java
+ com.example.iw_fashion.BuildConfig
+com/example/iw_fashion/MainActivity.java
+ com.example.iw_fashion.MainActivity

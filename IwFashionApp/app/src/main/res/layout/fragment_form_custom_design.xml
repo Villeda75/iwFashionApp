@@ -4,74 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient">
+    android:background="#FDFBFB">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="402dp"
+        android:layout_height="676dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.709">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="@string/solicitar_desing"
+            android:textColor="#040303"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/black" />
 
         <EditText
             android:id="@+id/txt_EmailDesgin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
             android:baselineAligned="false"
             android:ems="10"
             android:gravity="center_horizontal"
             android:hint="@string/correo_desing"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#90FFFFFF" />
+            android:textColor="#090808"
+            android:textColorHint="#F7000000" />
 
         <EditText
             android:id="@+id/txt_TelDesgin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
             android:baselineAligned="false"
             android:ems="10"
             android:gravity="center_horizontal"
             android:hint="@string/tel_desing"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#90FFFFFF" />
+            android:textColor="#090808"
+            android:textColorHint="#FC040303" />
 
         <ImageView
             android:id="@+id/imageViewCustomDesign"
             android:layout_width="match_parent"
             android:layout_height="223dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="64dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginBottom="40dp"
             android:baselineAligned="false"
             android:onClick="CargarImagen"
-            app:srcCompat="@drawable/img_no_disponible"
-            tools:srcCompat="@drawable/img_no_disponible" />
+            app:srcCompat="@android:drawable/ic_menu_upload"
+            tools:srcCompat="@android:drawable/ic_menu_camera" />
 
         <EditText
             android:id="@+id/txt_Description_design"
             android:layout_width="match_parent"
             android:layout_height="105dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:gravity="center_horizontal"
             android:hint="@string/description_desing"
             android:inputType="textMultiLine"
-            android:textColor="#000000"
-            android:textColorHint="#9AFFFFFF" />
+            android:textColor="#090808"
+            android:textColorHint="#000000" />
 
         <Button
             android:id="@+id/button_send_Cdesign"
-            android:layout_width="match_parent"
+            android:layout_width="276dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="0dp"
-            android:text="@string/enviar_custom_design" />
+            android:background="#FF090808"
+            android:text="@string/enviar_custom_design"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 

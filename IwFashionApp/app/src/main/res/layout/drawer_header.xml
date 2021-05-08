@@ -10,9 +10,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="@drawable/bg_gradient"
+        android:layout_width="413dp"
+        android:layout_height="78dp"
+        android:background="@color/black"
+        android:gravity="bottom|left"
         android:padding="20dp"
         android:text="@string/drawer_header"
         android:textSize="24sp"

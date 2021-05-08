@@ -67,12 +67,11 @@ public class CustomAdapter extends BaseAdapter {
                 .load(item.getUrl_img().toString())
                 .into(imageProducto);
 
-        TxtNombre.setText(item.getSlug());
-        TxtPrecioNormal.setText(String.valueOf(item.getSales_price()));
-TxtPrecioNormal.setText(String.valueOf(item.getSales_price()));
+        TxtNombre.setText(item.getProduct_type());
+        TxtPrecioNormal.setText( "$ " +  String.valueOf(item.getSales_price()));
         TxtPrecioDiscount.setPaintFlags(TxtPrecioDiscount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-TxtPrecioDiscount.setText(String.valueOf(item.getDiscount_price()));
+        TxtPrecioDiscount.setText( "$ " +  String.valueOf(item.getDiscount_price()));
 
 
         btn_ver_mas1.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +80,7 @@ TxtPrecioDiscount.setText(String.valueOf(item.getDiscount_price()));
 
                 Intent detalle_producto=new Intent(context, DetalleProductoActivity.class);
                 detalle_producto.putExtra("id_product",item.getId_product());
-                detalle_producto.putExtra("slug",item.getSlug());
+                detalle_producto.putExtra("slug",item.getProduct_type());
                 detalle_producto.putExtra("stock",item.getStock());
                 detalle_producto.putExtra("visible",item.getVisible());
                 detalle_producto.putExtra("color",item.getColor());

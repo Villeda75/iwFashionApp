@@ -65,7 +65,7 @@ public class DetalleProductoActivity extends AppCompatActivity implements Naviga
 
        Txt_Description.setText(description);
        Txt_slug.setText(slug);
-       Txt_sales_price.setText(String.valueOf(sales_price));
+       Txt_sales_price.setText("$ " + String.valueOf(sales_price) );
     }
 
     @Override
