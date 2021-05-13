@@ -11,7 +11,7 @@ import sv.edu.udb.iwfashionapp.models.Producto;
 public interface productoAPI {
 
     @GET("products/{id}")
-    public Call<Producto> find(@Path("id") String id);
+    public Call<Producto> findProduct(@Path("id") String id);
 
     @GET("products/")
     Call<Producto> getAllProducts();

@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +30,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,11 +38,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import sv.edu.udb.iwfashionapp.interfaces.productoAPI;
+import sv.edu.udb.iwfashionapp.models.Cliente;
 import sv.edu.udb.iwfashionapp.models.Producto;
 import sv.edu.udb.iwfashionapp.services.CustomAdapter;
+import sv.edu.udb.iwfashionapp.services.DataBaseUtilities;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    NotificationBadge notificationBadge;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
@@ -49,16 +55,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView tvDescripcion;
     TextView tvPrecio;
     ImageView imgproducto;
+    ImageView CartBtn;
     ListView listviewProductos;
     FirebaseAuth firebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInOptions gso;
     Button BtnFind;
+    int id_cliente_global=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.producto_layout);
         setContentView(R.layout.home);
         edtCodigo=findViewById(R.id.edtCodigo);
         tvNombre=findViewById(R.id.tvNombre);
@@ -67,6 +74,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         imgproducto=findViewById(R.id.imgProducto);
         firebaseAuth = FirebaseAuth.getInstance();
         BtnFind=findViewById(R.id.btnBuscar);
+//sirve para mostrar la notificacion que muestra los articulos en carrito
+        notificationBadge=findViewById(R.id.badge);
+
+
+
+        CartBtn=findViewById(R.id.cart_img);
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,6 +99,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
+        CartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new CartFragment()).commit();
+            }
+        });
+
+
+        DataBaseUtilities dataBaseUtilities =new DataBaseUtilities();
+
+        Cliente _cliente=dataBaseUtilities.GetActiveClient(this);
+        if(_cliente!=null)
+        {
+            id_cliente_global=_cliente.getId_cliente();
+            CountItemsCar();
+        }
+
+
+    }
+
+
+
+
+
+
+    //Este metodo sirve para asignarle el numero de items en el carrito asociados al cliente
+    public void CountItemsCar()
+    {
+        int total_items = 0;
+        SqlLiteOpenHelperAdmin admin = new SqlLiteOpenHelperAdmin(this,"iwfashion_database",null,1);
+
+        SQLiteDatabase database = admin.getReadableDatabase();
+
+            Cursor fila0 = database.rawQuery("SELECT COUNT(id_item) FROM carrito WHERE id_cliente=" + String.valueOf(id_cliente_global) + "", null);
+
+            if (fila0.moveToFirst()) {
+                total_items = fila0.getInt(0);
+            }
+
+            notificationBadge.setNumber(total_items);
+
     }
     @Override
     public void onBackPressed() {
@@ -110,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .build();
 
         productoAPI productAPI=retrofit.create(productoAPI.class);
-        Call<Producto> call=productAPI.find(id);
+        Call<Producto> call=productAPI.findProduct(id);
 
         call.enqueue(new Callback<Producto>() {
             @Override
@@ -182,6 +238,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 closeFirebaseAccount();
                 closeFacebookAccount();
                 closeGoogleAccount();
+                DataBaseUtilities dataBaseUtilities=new DataBaseUtilities();
+                dataBaseUtilities.LogOutSqlLiteSession(this);
                 break;
 
         }

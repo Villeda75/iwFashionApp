@@ -15,6 +15,9 @@
     <string name="agregar_carrito">Agregar al carrito</string>
     <string name="enviar_custom_design">Enviar diseño personalizado</string>
 
+    <string name="cart_pay">Pagar</string>
+    <string name="cart_update">Actualizar</string>
+
 
     <string name="correo_desing">tucorreo@gmail.com</string>
     <string name="tel_desing">7645-3233</string>

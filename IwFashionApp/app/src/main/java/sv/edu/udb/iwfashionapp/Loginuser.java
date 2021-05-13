@@ -62,6 +62,8 @@ public class Loginuser extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(Loginuser.this,"Usuario creado con éxito",Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(Loginuser.this,Login.class);
+                            i.putExtra("nombre",nombre);
+                            i.putExtra("apellido",apellido);
                             startActivity(i);
                             FirebaseAuth.getInstance().signOut();
                             Loginuser.this.finish();

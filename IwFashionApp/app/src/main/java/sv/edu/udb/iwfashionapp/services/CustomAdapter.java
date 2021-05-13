@@ -80,6 +80,7 @@ public class CustomAdapter extends BaseAdapter {
 
                 Intent detalle_producto=new Intent(context, DetalleProductoActivity.class);
                 detalle_producto.putExtra("id_product",item.getId_product());
+
                 detalle_producto.putExtra("slug",item.getProduct_type());
                 detalle_producto.putExtra("stock",item.getStock());
                 detalle_producto.putExtra("visible",item.getVisible());

@@ -34,6 +34,10 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
 
+import sv.edu.udb.iwfashionapp.models.Cliente;
+import sv.edu.udb.iwfashionapp.services.DataBaseUtilities;
+import sv.edu.udb.iwfashionapp.services.DatabaseAPI;
+
 public class Login extends AppCompatActivity {
     EditText edt1, edt2;
     FirebaseAuth firebaseAuth;
@@ -42,6 +46,8 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private CallbackManager callbackManager;
     private LoginButton loginButton;
+    public String nombreUser="";
+    public String ApellidoUser="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,15 @@ public class Login extends AppCompatActivity {
         loginButton.setReadPermissions(Arrays.asList("email"));
         loginButton.setReadPermissions(Arrays.asList("public_profile"));
         callbackManager = CallbackManager.Factory.create();
+        Bundle bundle=getIntent().getExtras();
+
+
+               if(getIntent().getExtras()!=null)
+                {
+               nombreUser=bundle.getString("nombre");
+               ApellidoUser=bundle.getString("apellido");
+
+                }
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -85,6 +100,7 @@ public class Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null){
                     Intent intentDashboard = new Intent(getApplicationContext(), MainActivity.class);
+
                     intentDashboard.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentDashboard);
                 }
@@ -99,7 +115,11 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(Login.this, "Login exitoso", Toast.LENGTH_LONG).show();
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
                     Intent i2 = new Intent(Login.this,MainActivity.class);
+                    Cliente _cliente= new Cliente(0,user.getUid(),"","",user.getEmail());
+                    DataBaseUtilities dataBaseUtilities =new DataBaseUtilities();
+                    dataBaseUtilities.VerifyUser(Login.this.getApplicationContext(),_cliente);
                     startActivity(i2);
                 }else{
                     Log.d("Error", task.getException().toString());
@@ -136,7 +156,20 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Login.this,"Sesión iniciada con éxito",Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
                             Intent i2 = new Intent(Login.this,MainActivity.class);
+
+                            String nombres=user.getDisplayName().substring(0,user.getDisplayName().indexOf(" "));
+                            String apellidos=user.getDisplayName().substring(user.getDisplayName().indexOf(" "),user.getDisplayName().length());
+
+                            Cliente _cliente= new Cliente(0,user.getUid(),nombres,apellidos,user.getEmail());
+
+                            DataBaseUtilities dataBaseUtilities =new DataBaseUtilities();
+                            dataBaseUtilities.VerifyUser(Login.this.getApplicationContext(),_cliente);
+
+                            DatabaseAPI database=new DatabaseAPI();
+                            database.RegisterUser(Login.this.getApplicationContext(),user.getDisplayName(),user.getEmail());
+
                             startActivity(i2);
                         } else {
                             Toast.makeText(Login.this, "Ocurrio un error. " + task.getException().toString(), Toast.LENGTH_LONG).show();
@@ -190,6 +223,17 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this,"Sesión iniciada con éxito",Toast.LENGTH_SHORT).show();
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         Intent i2 = new Intent(Login.this,MainActivity.class);
+
+
+
+                        Cliente _cliente= new Cliente(0,user.getUid(),nombreUser,ApellidoUser,user.getEmail());
+
+                        DataBaseUtilities dataBaseUtilities =new DataBaseUtilities();
+                        dataBaseUtilities.VerifyUser(Login.this.getApplicationContext(),_cliente);
+
+                        DatabaseAPI database=new DatabaseAPI();
+                        database.RegisterUser(Login.this.getApplicationContext(),nombreUser+" "+ApellidoUser,user.getEmail());
+
                         startActivity(i2);
                     }else{
                         String ErrorCode = ((FirebaseAuthException) task.getException()).getErrorCode();

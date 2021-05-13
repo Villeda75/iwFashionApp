@@ -14,7 +14,7 @@ public class Producto {
     }
 
     private List<item> results;
-    public class item{
+    public static class item{
 
     private String id_product;
     private String slug;

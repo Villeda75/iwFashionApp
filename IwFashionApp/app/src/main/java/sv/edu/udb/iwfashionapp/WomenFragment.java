@@ -1,8 +1,11 @@
 package sv.edu.udb.iwfashionapp;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -177,5 +180,6 @@ public class WomenFragment extends Fragment {
 
 
     }
+
 
 }
