@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,11 +76,10 @@ public class CartFragment extends Fragment {
         return fragment;
     }
 
-
     ListView listviewCart;
     TextView total_cart;
     Button btn_update;
-    Button btn_pay;
+    Button btn_pay, btnVerProductos;
 
     NotificationBadge notificationBadge;
     @Override
@@ -98,39 +98,37 @@ public class CartFragment extends Fragment {
         total_cart=view.findViewById(R.id.txt_total_cart);
         btn_update=view.findViewById(R.id.btn_update_cart);
         btn_pay=view.findViewById(R.id.btn_payment);
-
+        btnVerProductos  = view.findViewById(R.id.btnVerProductos);
 
 
         Cliente _cliente = dataBaseUtilities.GetActiveClient(this.getContext());
         if (_cliente != null) {
-//Aqui se carga la informacion del carrito
+            //Aqui se carga la informacion del carrito
 
+            List<Producto.item> lista=dataBaseUtilities.ListIdsFromActiveUser(this.getContext(),_cliente.getId_cliente());
+            CustomAdapterItemCart adapter = new CustomAdapterItemCart(CartFragment.this.getContext(), lista);
+            listviewCart.setAdapter(adapter);
 
-         List<Producto.item> lista=dataBaseUtilities.ListIdsFromActiveUser(this.getContext(),_cliente.getId_cliente());
+            if( lista.size() == 0)
+            {
+                Toast.makeText(this.getContext(), "No hay elementos agregados, ¡Qué esperas para realizar tu pedido!",Toast.LENGTH_LONG).show();
+                btn_pay.setVisibility(View.INVISIBLE);
+                btn_update.setVisibility(View.INVISIBLE);
+                total_cart.setVisibility(view.INVISIBLE);
+                btnVerProductos.setVisibility(view.VISIBLE);
+            }
+            else
+            {
+                btn_pay.setVisibility(View.VISIBLE);
+                btn_update.setVisibility(View.VISIBLE);
+                total_cart.setVisibility(view.VISIBLE);
+                btnVerProductos.setVisibility(view.INVISIBLE);
+            }
 
-
-
-    CustomAdapterItemCart adapter = new CustomAdapterItemCart(CartFragment.this.getContext(), lista);
-    listviewCart.setAdapter(adapter);
-
-    if(lista.size()==0)
-    {
-        btn_pay.setVisibility(View.INVISIBLE);
-    }
-    else
-    {
-        btn_pay.setVisibility(View.VISIBLE);
-    }
-
-
-
-    total_cart.setText("Total: $"+String.valueOf(dataBaseUtilities.CalculateTotal(CartFragment.this.getContext(),_cliente.getId_cliente())));
-
-
-
+            total_cart.setText("Total: $"+String.valueOf(dataBaseUtilities.CalculateTotal(CartFragment.this.getContext(),_cliente.getId_cliente())));
 
         } else {
-            Toast.makeText(this.getContext(), "Registrarse para agregar al carrito", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getContext(), "Ocurrió un error al verificar el usuario", Toast.LENGTH_LONG).show();
         }
 
         btn_update.setOnClickListener(new View.OnClickListener() {
@@ -143,21 +141,19 @@ public class CartFragment extends Fragment {
         btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String title = "Realizar pedido a IwFashion";
+                String message = "¿Está seguro/a de solicitar el pedido?";
+                String strbt1 = "Aceptar"; String strbt2 = "Cancelar";
 
-
-
-                String title = "Consulta";
-                String message = "¿Esta seguro/a de realizar el pago?";
-                String strbt1 = "ACEPTAR"; String strbt2 = "CANCELAR";
                 AlertDialog.Builder ad = new AlertDialog.Builder(v.getContext());
                 ad.setTitle(title);	ad.setIcon(android.R.drawable.ic_dialog_info);
                 ad.setMessage(message);
                 ad.setPositiveButton(strbt1, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int arg1) {
-                        Toast.makeText(v.getContext(), "Pago realizado",Toast.LENGTH_LONG).show();
-                        double total=0;
+                        Toast.makeText(v.getContext(), "Pedido solicitado exitosamente",Toast.LENGTH_LONG).show();
+                        double total = 0.00;
                         total=dataBaseUtilities.CalculateTotal(CartFragment.this.getContext(),_cliente.getId_cliente());
-                        String email="";
+                        String email = "";
                         email=dataBaseUtilities.GetActiveClient(CartFragment.this.getContext()).getCorreo();
                         ArrayList<OrderPurchase.item> itemsCart=new ArrayList<>();
                         List<Producto.item> listaActual=dataBaseUtilities.ListIdsFromActiveUser(CartFragment.this.getContext(),_cliente.getId_cliente());
@@ -181,25 +177,19 @@ public class CartFragment extends Fragment {
                         databaseAPI.FinishShopping(CartFragment.this.getContext(),orderPurchase);
 
                         dataBaseUtilities.ClearCart(CartFragment.this.getContext(),_cliente.getId_cliente());
-                        Toast.makeText(CartFragment.this.getContext(),"Pago exitoso se ha borrado el carrito",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CartFragment.this.getContext(),"Gracias por preferirnos!",Toast.LENGTH_SHORT).show();
 
                         List<Producto.item> lista=dataBaseUtilities.ListIdsFromActiveUser(CartFragment.this.getContext(),_cliente.getId_cliente());
 
-
-
-
-
-
                         CustomAdapterItemCart adapter = new CustomAdapterItemCart(CartFragment.this.getContext(), lista);
                         listviewCart.setAdapter(adapter);
-                        total_cart.setText("");
-
+                        total_cart.setText("$0.00");
 
                     }
                 });
                 ad.setNegativeButton(strbt2, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int arg1) {
-                        Toast.makeText(v.getContext(), "Pago cancelado",Toast.LENGTH_LONG).show();
+                        Toast.makeText(v.getContext(), "Pedido cancelado",Toast.LENGTH_LONG).show();
                     }
                 }).setIcon(android.R.drawable.ic_menu_help);
 
@@ -221,7 +211,5 @@ public class CartFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cart, container, false);
     }
-
-
 
 }

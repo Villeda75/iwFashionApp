@@ -122,7 +122,7 @@ public class CustomDesignsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<CustomDesign> call, Throwable t) {
-                Toast.makeText(context,"Ocurrio un error",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Ocurrió un error",Toast.LENGTH_SHORT).show();
             }
         });
 
