@@ -120,12 +120,9 @@ public class FormCustomDesignFragment extends Fragment {
                 String message=Txt_Description.getText().toString();
                 String tel_client=Txt_TelDesign.getText().toString();
               SendForm("Marcos",email_client,tel_client,fotoNombre,fotoEnBase64,message);
-                Toast.makeText(getContext(),"Se ha enviado el diseño",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Diseño solicitado exitosamente",Toast.LENGTH_LONG).show();
             }
         });
-
-
-
 
     }
 
@@ -169,7 +166,7 @@ public class FormCustomDesignFragment extends Fragment {
                 }
                 else
                 {
-                    Toast.makeText(FormCustomDesignFragment.this.getContext(),"No funciona",Toast.LENGTH_LONG);
+                    Toast.makeText(FormCustomDesignFragment.this.getContext(),"Ocurrió un error",Toast.LENGTH_LONG);
                 }
 
             }

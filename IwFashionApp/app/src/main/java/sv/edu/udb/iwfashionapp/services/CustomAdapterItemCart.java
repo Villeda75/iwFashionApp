@@ -76,7 +76,7 @@ public class CustomAdapterItemCart extends BaseAdapter{
 
 
 
-       TxtCantidad.setText(String.valueOf(item.getStock()));
+        TxtCantidad.setText(String.valueOf(item.getStock()));
 
         //Ahora se asigna los valores que se mostraran
 
