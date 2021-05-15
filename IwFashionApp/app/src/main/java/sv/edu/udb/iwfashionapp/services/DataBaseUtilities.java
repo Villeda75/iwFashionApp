@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,8 +139,13 @@ public class DataBaseUtilities {
         final ArrayList<Producto.item> lista=new ArrayList<Producto.item>();
         SqlLiteOpenHelperAdmin admin = new SqlLiteOpenHelperAdmin(context,"iwfashion_database",null,1);
 
+
+
         SQLiteDatabase database = admin.getReadableDatabase();
-        Cursor fila0 = database.rawQuery("SELECT C.id_producto,nombre_producto,url_img,precio,cantidad FROM carrito AS C INNER JOIN productos AS P ON C.id_producto=P.id_producto WHERE id_cliente="+id_cliente+"",null);
+        final String Clear_cart="DELETE FROM carrito WHERE id_cliente="+id_cliente+" AND cantidad=0";
+        database.execSQL(Clear_cart);
+
+        Cursor fila0 = database.rawQuery("SELECT C.id_producto,nombre_producto,url_img,precio,cantidad FROM carrito AS C INNER JOIN productos AS P ON C.id_producto=P.id_producto WHERE id_cliente="+id_cliente+" AND cantidad>0",null);
 
 
         //si existe se lee el valor que devuelve el select
@@ -186,7 +193,10 @@ public class DataBaseUtilities {
 
         }
 
-        return totalCarrito;
+        BigDecimal bd = new BigDecimal(totalCarrito).setScale(2, RoundingMode.HALF_UP);
+        double valor = bd.doubleValue();
+
+        return valor ;
     }
 
     public void VerifyUser(Context context,Cliente cliente)
